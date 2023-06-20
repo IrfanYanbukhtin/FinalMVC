@@ -1,0 +1,164 @@
+﻿@{
+    HomeViewModel viewModel = Model;
+    var sliderImages = viewModel.SliderImages;
+    var notices = viewModel.Notices;
+    var banners = viewModel.Banners;
+    var courses = viewModel.Courses;
+    var events = viewModel.Events;
+    var testimonials = viewModel.Testimonials;
+    var blogs = viewModel.Blogs;
+    var noticesInfo = viewModel.NoticesInfo;
+}
+
+		<!-- Background Area Start -->
+        <section id="slider-container" class="slider-area"> 
+            <div class="slider-owl owl-theme owl-carousel"> 
+               @foreach (var item in sliderImages)
+        {
+            <!-- Start Slingle Slide -->
+            <div class="single-slide item" style="background-image: url(/img/slider/@item.ImageUrl)">
+                <!-- Start Slider Content -->
+                <div class="slider-content-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7 col-md-offset-left-5">
+                                <div class="slide-content-wrapper">
+                                    <div class="slide-content">
+                                        @Html.Raw(@item.Title)
+                                        <p>@item.Description</p>
+                                        <a asp-controller="about" asp-action="details" class="default-btn">Learn more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Start Slider Content -->
+            </div>
+            <!-- End Slingle Slide -->
+        }					
+            </div>
+        </section>
+		<!-- Background Area End -->
+        <!-- Notice Start -->
+        <section class="notice-area pt-150 pb-150">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="notice-left">
+                            <h3>notice board</h3>
+                    <partial name="_NoticePartial" model="@notices"> </partial>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="notice-right">
+                          @foreach (var item in noticesInfo)
+                    {
+                        <div class="single-notice-right mb-25 pb-25">
+                            <h3>@item.Title</h3>
+                            <p>@item.Description</p>
+                        </div>
+                    } 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Notice End -->
+        <!-- Choose Start -->
+        <section class="choose-area pb-85 pt-77">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-left-4 col-sm-8 col-md-offset-left-4">
+                      @foreach (var item in banners)
+                {
+                    <div class="choose-content text-left">
+                        <h2>@item.Title</h2>
+                        <p>@item.Description </p>
+                        <p class="choose-option">I must explain to you how all this mistaken idea of denouncing pleure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings  the master-builder. </p>
+                        <a asp-controller="course" asp-action="details">view courses</a>
+                    </div>
+                } 
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Choose Area End -->
+        <!-- Courses Area Start -->
+        <div class="courses-area pt-150 text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section-title">
+                            <img src="~/img/icon/section.png" alt="section-title">
+                            <h2>COURSES WE OFFER</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+            <partial name="_CoursePartial" model="@courses"> </partial>
+                </div>
+            </div>
+        </div>
+        <!-- Courses Area End -->
+        <!-- Event Area Start -->
+        <div class="event-area one text-center pt-140 pb-150">
+            <div class="container">
+                <div class="row">
+                     <div class="col-xs-12">
+                        <div class="section-title">
+                            <img src="~/img/icon/section.png" alt="section-title">
+                            <h2>UPCOMMING EVENTS</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+            <partial name="_EventPartial" model="@events"> </partial>
+                </div>
+            </div>
+        </div>
+        <!-- Event Area End -->
+        <!-- Testimonial Area Start -->
+        <div class="testimonial-area pt-110 pb-105 text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="testimonial-owl owl-theme owl-carousel">
+                        <div class="col-md-8 col-md-offset-2 col-sm-12">
+                    @foreach (var item in testimonials)
+                    {
+                        <div class="single-testimonial">
+                            <div class="testimonial-info">
+                                <div class="testimonial-img">
+                                    <img src="~/img/testimonial/@item.ImageUrl" alt="testimonial">
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>@item.Description</p>
+                                    <h4>@item.Fullname</h4>
+                                    <h5>@item.KindOfactivity</h5>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Testimonial Area End -->
+        <!-- Blog Area Start -->
+        <div class="blog-area pt-150 pb-150">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section-title text-center">
+                            <img src="~/img/icon/section.png" alt="section-title">
+                            <h2>LATEST FROM BLOG</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+            <partial name="_BlogPartial" model="@blogs"> </partial>
+                </div>
+            </div>
+        </div>
+        <!-- Blog Area End -->

@@ -1,0 +1,35 @@
+﻿@{
+    TeacherViewModel viewModel = Model;
+    var teachers = viewModel.Teachers;
+}
+
+<!-- Banner Area Start -->
+<div class="banner-area-wrapper">
+    <div class="banner-area text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>our teachers</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Area End -->
+<!-- Teacher Start -->
+<div class="teacher-area pt-150 pb-105">
+    <div class="container">
+        <div class="row" id="teacherRow">
+           <partial name="_TeacherPartial" model="@teachers"> </partial>
+        </div>
+        <div class="row justify-content-center">
+            <input value="@ViewBag.TeacherCount" type="hidden" id="teacherCount" />
+            <button class="btn btn-primary" id="loadMore">Load more</button>
+        </div>
+    </div>
+</div>
+<!-- Teacher End -->
