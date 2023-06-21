@@ -40,9 +40,19 @@ namespace FinalMVC.Controllers
 
         public IActionResult LoadCourses(int skipCourse)
         {
+        
             var courses = _dbContext.Courses.Skip(skipCourse).Take(3).ToList();
 
             return PartialView("_CoursePartial", courses);
         }
+
+        public IActionResult Search(string searchedCourse)
+        {
+            if (string.IsNullOrWhiteSpace(searchedCourse)) return NoContent();
+            var courses = _dbContext.Courses.Where(x => x.Title.Contains(searchedCourse)).ToList();
+
+            return PartialView("_SearchedCoursePartial", courses);
+        }
+
     }
 }

@@ -16,16 +16,16 @@ namespace FinalMVC.Controllers
             _dbContext = appDbContext;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var sliderImage = await _dbContext.SliderImages.ToListAsync();
-            var notice = await _dbContext.Notices.ToListAsync();
-            var noticeInfo = await _dbContext.NoticeInfos.ToListAsync();
-            var banner = await _dbContext.Banners.ToListAsync();
-            var course = await _dbContext.Courses.ToListAsync();
-            var events = await _dbContext.Events.ToListAsync();
-            var testimonial = await _dbContext.Testimonials.ToListAsync();
-            var blog = await _dbContext.Blogs.ToListAsync();
+            var sliderImage =  _dbContext.SliderImages.ToList();
+            var notice =  _dbContext.Notices.ToList();
+            var noticeInfo =  _dbContext.NoticeInfos.ToList();
+            var banner = _dbContext.Banners.ToList();
+            var course =  _dbContext.Courses.Take(3).ToList();
+            var events =  _dbContext.Events.Take(8).ToList();
+            var testimonial =  _dbContext.Testimonials.ToList();
+            var blog =  _dbContext.Blogs.Take(3).ToList();
 
             var viewModel = new HomeViewModel
             {

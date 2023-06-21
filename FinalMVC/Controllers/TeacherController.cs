@@ -38,6 +38,7 @@ namespace FinalMVC.Controllers
             return View(teacher);
         }
 
+
         public IActionResult LoadTeachers(int skip)
         {
             if (skip >= _teacherCount) return BadRequest();
@@ -49,9 +50,7 @@ namespace FinalMVC.Controllers
         public IActionResult Search(string searchedTeacher)
         {
             if (string.IsNullOrWhiteSpace(searchedTeacher)) return NoContent();
-  var searchedTeachers = _dbContext.Teachers
-                    .Where(x => x.FullName.ToLower().Contains(searchedTeacher.ToLower()))
-                    .ToList();
+             var searchedTeachers = _dbContext.Teachers.Where(x => x.FullName.ToLower().Contains(searchedTeacher.ToLower())).ToList();
 
             return PartialView("_SearchedTeacherPartial", searchedTeachers);
         }

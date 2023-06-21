@@ -4,7 +4,7 @@
 @foreach (var item in Model)
 {
     <li>
-        <a asp-contoller="teacher" asp-action="details" asp-route-id="@item.Id">
+        <a asp-controller="teacher" asp-action="details" asp-route-id="@item.Id">
             @item.FullName
         </a>
     </li>

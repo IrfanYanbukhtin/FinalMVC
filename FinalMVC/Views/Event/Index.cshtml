@@ -26,6 +26,10 @@
         <div class="row">
             <partial name="_EventPartial" model="@events"> </partial>
         </div>
+        <div class="row justify-content-center">
+            <input value="@ViewBag.EventCount" type="hidden" id="eventCount" />
+            <button class="btn btn-primary" id="loadEvent">Load more</button>
+        </div>
     </div>
 </div>
 <!-- Event End -->

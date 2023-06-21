@@ -42,6 +42,7 @@ namespace FinalMVC.Controllers
 
         public IActionResult LoadBlogs(int skipBlog)
         {
+      
             var blogs = _dbContext.Blogs.Skip(skipBlog).Take(3).ToList();
 
             return PartialView("_BlogPartial", blogs);

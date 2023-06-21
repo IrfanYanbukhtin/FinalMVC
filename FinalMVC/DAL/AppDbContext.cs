@@ -1,15 +1,18 @@
 ﻿using FinalMVC.DAL.Entities;
 using Microsoft.AspNetCore.Components.Routing;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.PortableExecutable;
 
 namespace FinalMVC.DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
+
         }
+
         public DbSet<HeaderTop> HeaderTop { get; set; }
         public DbSet<Header> Header { get; set; }
         public DbSet<TopNavigation> TopNavigations { get; set; }

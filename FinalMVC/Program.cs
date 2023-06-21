@@ -1,5 +1,6 @@
 using System;
 using FinalMVC.DAL;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinalMVC
@@ -26,6 +27,22 @@ namespace FinalMVC
             {
                 builder.UseSqlServer(connectionString);
             });
+
+            builder.Services.AddIdentity<User, IdentityRole>(options =>
+            {
+				options.Password.RequireUppercase = false;
+				options.Password.RequireNonAlphanumeric = false;
+				options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
+
+				options.Password.RequireLowercase = false;
+				options.Lockout.MaxFailedAccessAttempts = 3;
+				options.User.RequireUniqueEmail = true;
+
+				options.SignIn.RequireConfirmedEmail = false;
+				options.Lockout.AllowedForNewUsers = true;
+
+			}).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
 
             var app = builder.Build();
 
