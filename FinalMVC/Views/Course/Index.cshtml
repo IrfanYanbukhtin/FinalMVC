@@ -31,7 +31,7 @@
                 </div>
                 <div class="course-form">
                     <form id="search" action="#">
-                        <input type="search" placeholder="Search..." name="search" />
+                        <input id="course-search" type="search" placeholder="Search..." name="search" />
                         <button type="submit">search</button>
                     </form>
                 </div>
@@ -39,6 +39,10 @@
         </div>
         <div class="row">
             <partial name="_CoursePartial" model="@courses"> </partial>
+        </div>
+        <div class="row justify-content-center">
+            <input value="@ViewBag.CourseCount" type="hidden" id="courseCount" />
+            <button class="btn btn-primary" id="loadCourse">Load more</button>
         </div>
     </div>
 </div>

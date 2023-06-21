@@ -1,0 +1,12 @@
+﻿﻿@using FinalMVC.DAL.Entities
+@model List<Course>
+
+@foreach (var item in Model)
+{
+    <li>
+        <a asp-controller="course" asp-action="details" asp-route-id="@item.Id">
+            @item.Title
+        </a>
+    </li>
+
+}

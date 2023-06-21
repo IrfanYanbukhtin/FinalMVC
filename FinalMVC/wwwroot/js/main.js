@@ -32,10 +32,10 @@
     Search
 --------------------------------------*/
     $(document).on('keyup', '#searchTeachers', function () {
-        var searchedTeacher = $(this).val()
+        var searchedTeacherName = $(this).val()
 
         $.ajax({
-            url: `/teacher/search?searchedTeacherFullname=${searchedTeacher}`,
+            url: `/teacher/search?searchedTeacherFullname=${searchedTeacherName}`,
             type: "GET",
 
             success: function (response) {
@@ -48,15 +48,15 @@
             }
         });
     })
-
+    
 /*------------------------------------
-        Load More
+        Load More Teacher
 --------------------------------------*/
     var skip = 4;
     $(document).on('click', '#loadMore', function () {
         var teacherCount = $("#teacherCount").val();
         $.ajax({
-            url: "/teacher/loadTeachers?skip="+skip,
+            url: "/teacher/loadTeachers?skip=" + skip,
             type: "GET",
             success: function (response) {
                 $("#teacherRow").append(response);
@@ -72,6 +72,33 @@
             }
         });
     })
+
+    /*------------------------------------
+        Load More Event
+--------------------------------------*/
+    var skipEvent = 3;
+
+    $(document).on('click', '#loadEvent', function () {
+        var eventCount = $('#eventCount').val()
+        $.ajax({
+            url: "/event/loadevents?skip=" + skipEvent,
+            type: "GET",
+
+            success: function (response) {
+                $('#eventRow').append(response)
+                skipEvent += 3;
+
+                if (skipEvent >= eventCount)
+                    $('#loadEvent').remove()
+            },
+
+            error: function (xhr) {
+
+            }
+        });
+    })
+
+
 
 /*------------------------------------
 	Owl Carousel

@@ -27,15 +27,11 @@
         <div class="row">
             <partial name="_BlogPartial" model="@blogs"> </partial>
         </div>
+
         <div class="row">
-            <div class="col-xs-12">
-                <div class="pagination">
-                    <ul>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                    </ul>
-                </div>
+            <div class="row justify-content-center align-content-center">
+                <input value="@ViewBag.BlogCount" type="hidden" id="blogCount" />
+                <button class="btn btn-primary" id="loadBlog">Load more</button>
             </div>
         </div>
     </div>

@@ -44,6 +44,7 @@ namespace FinalMVC.Controllers
 
         public IActionResult LoadEvents(int skipEvent)
         {
+            if (skipEvent >= _eventCount) return BadRequest();
             var events = _dbContext.Events.Skip(skipEvent).Take(3).ToList();
 
             return PartialView("_EventPartial", events);
