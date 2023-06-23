@@ -35,7 +35,7 @@
         var searchedTeacherName = $(this).val()
 
         $.ajax({
-            url: `/teacher/search?searchedTeacherFullname=${searchedTeacherName}`,
+            url: `/teacher/search?searchedTeacher=${searchedTeacherName}`,
             type: "GET",
 
             success: function (response) {
